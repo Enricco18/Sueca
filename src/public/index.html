@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="home" class="page">
+      <h3>Nickname:</h3>
+      <input id="nickname" type="text" required />
+
+      <a href="#rooms"><button id="submitBtn">Submit</button></a>
+    </div>
+    <div id="rooms" class="page" style="display: none;">
+      <input type="text" id="roomId" />
+      <a href="#game"><button id="enterBtn">Enter Room</button></a>
+      <a href="#game"><button id="roomBtn">Create Room</button></a>
+    </div>
+    <div id="game" class="page" style="display: none;">
+      <div>
+        <button id="playBtn">Play</button>
+        <button id="grabBtn">Grab Card</button>
+      </div>
+
+      <div id="sueca" style="width: 100%; height: 100%;"></div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      let suecaDiv = document.querySelector("#sueca");
+      let inputRoomId = document.querySelector("#roomId");
+      let inputNickname = document.querySelector("#nickname");
+      let submitBtn = document.querySelector("#submitBtn");
+      let roomBtn = document.querySelector("#roomBtn");
+      let enterBtn = document.querySelector("#enterBtn");
+      let playBtn = document.querySelector("#playBtn");
+      let grabBtn = document.querySelector("#grabBtn");
+      let player;
+      let Game = [];
+
+      submitBtn.onclick = createPlayer;
+      roomBtn.onclick = createRoom;
+      enterBtn.onclick = enterRoom;
+      playBtn.onclick = createGame;
+      grabBtn.onclick = turnGame;
+
+      socket.on("createdPlayer", resp => {
+        player = resp;
+      });
+
+      function enterRoom() {
+        let id = inputRoomId.value;
+        inputRoomId.value = "";
+        socket.emit("enterRoom", { room: id });
+      }
+
+      function createRoom() {
+        socket.emit("createRoom");
+      }
+
+      function createPlayer() {
+        let nickname = inputNickname.value;
+        inputNickname.value = "";
+        socket.emit("createPlayer", { name: nickname });
+      }
+
+      function createGame() {
+        socket.emit("createGame");
+        console.log("Jogo começou");
+      }
+      function turnGame() {
+        socket.emit("turnGame", player);
+        console.log("Next Turn");
+      }
+
+      socket.on("returnTable", function(data) {
+        const { player, card, rule, next } = data;
+        suecaDiv.innerText = "";
+        suecaDiv.innerText = `Jogador(a) ${player} tirou a carta ${card.value} - ${card.suit}, Regra:${rule}Próximo jogador(a):${next}`;
+      });
+    </script>
+    <script>
+      window.onload = () => {
+        window.location.hash = "";
+      };
+      window.onhashchange = () => {
+        render(window.location.hash);
+      };
+
+      function render(hash) {
+        let pages = document.querySelectorAll(".page");
+        pages.forEach(page => {
+          page.style.display = "none";
+        });
+
+        switch (hash) {
+          case "":
+            pages[0].style.display = "block";
+            break;
+          case "#home":
+            pages[0].style.display = "block";
+            break;
+          case "#rooms":
+            pages[1].style.display = "block";
+            break;
+          case "#game":
+            pages[2].style.display = "block";
+            break;
+          default:
+            pages[0].style.display = "block";
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
