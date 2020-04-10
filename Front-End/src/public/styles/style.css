@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,700&display=swap");
+
+textarea,
+select,
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"] {
+  -webkit-box-sizing: border-box;
+
+  -moz-box-sizing: border-box;
+
+  box-sizing: border-box;
+
+  -webkit-background-clip: padding;
+
+  -moz-background-clip: padding;
+
+  background-clip: padding-box;
+
+  -webkit-border-radius: 0;
+
+  -moz-border-radius: 0;
+
+  -ms-border-radius: 0;
+
+  -o-border-radius: 0;
+
+  border-radius: 0;
+
+  -webkit-appearance: none;
+
+  background-color: #fff;
+
+  color: #000;
+
+  outline: 0;
+
+  margin: 0;
+
+  padding: 0;
+
+  border: 0px;
+
+  text-align: left;
+
+  font-size: 1em;
+
+  height: 1em;
+
+  vertical-align: middle;
+}
+a:-webkit-any-link {
+  color: black;
+  cursor: pointer;
+}
+
+body,
+html {
+  font-family: "Roboto", sans-serif !important;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+.page {
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.wrapper {
+  position: relative;
+  width: 40%;
+  height: 50%;
+  min-width: 500px;
+  min-height: 150px;
+  background-color: #ffa372;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  -webkit-box-shadow: -18px 14px 14px -5px rgba(0, 0, 0, 0.56);
+  -moz-box-shadow: -18px 14px 14px -5px rgba(0, 0, 0, 0.56);
+  box-shadow: -18px 14px 14px -5px rgba(0, 0, 0, 0.56);
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+#home {
+  color: #efefef;
+  background-color: #1b262c;
+}
+
+.login-container {
+  padding: 3vh;
+}
+
+#submitBtn {
+  border: 0px;
+  color: #efefef;
+  background-color: #0f4c81;
+  border-radius: 10px;
+  margin-top: 3vh;
+  vertical-align: middle;
+}
+
+#submitBtn:hover {
+  transform: scale(1.05, 1.05);
+  -moz-transform: scale(1.05, 1.05);
+  -ms-transform: scale(1.05, 1.05);
+  -webkit-transform: scale(1.05, 1.05);
+  -o-transform: scale(1.05, 1.05);
+}
+
+#nickname {
+  background-color: #ffa372;
+  color: #1b262c;
+  border: 0px;
+  padding-left: 1px;
+  border-bottom: 1px solid #1b262c;
+  display: block;
+}
+
+#rooms {
+  background-color: #0f4c81;
+}
+
+.room-container {
+  box-sizing: border-box;
+  position: absolute;
+  padding: 8px 8px;
+  height: 100%;
+
+  width: 100%;
+}
+
+.room-table {
+  display: block;
+  margin-top: 10px;
+  max-height: 80%;
+}
+
+.room-table > thead {
+  width: 100%;
+  border: 1px 1px 0px 1px solid #efefef;
+  display: inline-block;
+  background-color: #ed6663;
+  -webkit-border-top-right-radius: 9px;
+  -webkit-border-top-left-radius: 9px;
+  -moz-border-radius-topright: 9px;
+  -moz-border-radius-topleft: 9px;
+  border-top-right-radius: 9px;
+  border-top-left-radius: 9px;
+}
+.room-table > tbody {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 250px;
+  -webkit-border-bottom-right-radius: 9px;
+  -webkit-border-bottom-left-radius: 9px;
+  -moz-border-radius-bottomright: 9px;
+  -moz-border-radius-bottomleft: 9px;
+  border-bottom-right-radius: 9px;
+  border-bottom-left-radius: 9px;
+}
+.room-table > tbody {
+  cursor: pointer;
+}
+.room-row-light {
+  background-color: #ffd5bf;
+}
+
+.room-row-dark {
+  background-color: #ffb48c;
+}
+
+.room-last-row {
+  -webkit-border-bottom-right-radius: 9px;
+  -webkit-border-bottom-left-radius: 9px;
+  -moz-border-radius-bottomright: 9px;
+  -moz-border-radius-bottomleft: 9px;
+  border-bottom-right-radius: 9px;
+  border-bottom-left-radius: 9px;
+}
+
+.room-table tr {
+  width: 100%;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+}
+
+.room-table td {
+  width: 100%;
+  text-align: center;
+}
+#roomLabel {
+  color: #efefef;
+  height: 20px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+#roomBtn {
+  background-color: #ffa372;
+  color: #efefef;
+  position: absolute;
+  right: 4px;
+  top: 35px;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}
+#game {
+  background-color: #ed6663;
+}
